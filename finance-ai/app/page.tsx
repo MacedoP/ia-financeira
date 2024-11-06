@@ -1,11 +1,18 @@
-import LoginPage from "./login/page";
+import { UserButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
 
-const Home = () => {
+const Home = async () => {
+  const { userId } = await auth()
+  
+  //se o ususario nao estiver logado fica na tela de login
+  if(!userId){
+    redirect("/login")
+  }
   return (
-    <div>
-      <LoginPage/>
-      
+    <div className="grid h-full place-items-center">
+      <UserButton  showName/>
     </div>
   );
 };
