@@ -1,13 +1,11 @@
-import { Button } from "./_components/ui/button";
+import LoginPage from "./login/page";
+
 
 const Home = () => {
   return (
     <div>
-      <h1 className="mt-6 text-center text-3xl text-red-500">
-        Welcome to my home page
-      </h1>
-
-      <Button variant="outline">Clicar</Button>
+      <LoginPage/>
+      
     </div>
   );
 };
