@@ -1,6 +1,6 @@
 "use client"
 
-import { Transaction } from "@prisma/client"
+import { Transaction, TransactionType } from "@prisma/client"
 import { ColumnDef } from "@tanstack/react-table"
 
 
@@ -13,6 +13,15 @@ export const transactionColumns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "type",
     header: "Tipo",
+    cell: ({row: {original: transaction }})=>{
+      if(transaction.type === TransactionType.DEPOSIT){
+        return "Depósito"
+      }
+      if(transaction.type === TransactionType.EXPENSE){
+        return "Despesa"
+      }
+        return "Investimento"
+    } 
   },
   {
     accessorKey: "category",
